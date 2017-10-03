@@ -11,77 +11,81 @@ namespace ConsoleApp2
         
         public static void Main(string[] args)
         {
-            Example exampleOfStartCountMethod = new Example();
-            exampleOfStartCountMethod.myFirstElement += exampleOfStartCountMethod.ShowMessage1;
-            exampleOfStartCountMethod.AmountOfElements += exampleOfStartCountMethod.ShowMessage2;
-            exampleOfStartCountMethod.PrintResults();
-
-
-
-            Console.ReadKey();
-        }
-
-        
-
-        
-
-        
-    }
-
-    public class GetRange
-    {
-        public IEnumerable<int> StartCount(int start, int count)
-        {
-            for (int i = start; i < (count + start); i++)
-                yield return i;
-        }
-    }
-
-    public class Example
-    {
-
-        public delegate void GetMessage();
-        public event GetMessage myFirstElement;
-        public event GetMessage AmountOfElements;
-
-        
-
-        public void PrintResults()
-        {
-
             var summ = 0;
             var result = 0;
             GetRange getRange = new GetRange();
+
+            getRange.myFirstElement += getRange.ShowMyFirstElement;
+            //Подписка на событие "Сообщение после первого элемента"
+
+            getRange.mySumOfAllElements += getRange.ShowMySumOfAllElements;
+            //Подписка на событие "Вывод суммы всех элементов"
+
             foreach (int item in getRange.StartCount(3, 8))
             {
                 Console.WriteLine();
                 result++;
-                
+
                 Console.WriteLine("Element #{0} is {1}.", result, item);
                 summ += item;
-                if (result == 1)
-                {
-                   myFirstElement();
-                }
             }
-            AmountOfElements();
             Console.WriteLine("The total number of elements is {0}, the sum of elements is {1}", result, summ);
             Console.WriteLine();
+            Console.ReadKey();
         }
-
-        
-
-        public void ShowMessage1()
-        {
-            
-            Console.WriteLine("First element there");
-        }
-
-        public void ShowMessage2()
-        {
-            Console.WriteLine("The sum of elements is there");
-        }
+   
     }
 
+    public class GetRange
+    {
+        public delegate void FirstElement();
+        public delegate void SumOfAllElements(int sumOfAllElements);
+        //Объявление делегатов 
 
+        public event FirstElement myFirstElement;
+        //Объявление события для делегата FirstElement()
+
+        public event SumOfAllElements mySumOfAllElements;
+        //Объявление события для делегата SumOfAllElements(int sumOfAllElements)
+
+
+        public IEnumerable<int> StartCount(int start, int count)
+        //Аналог метода Range(int,int)
+        {
+            var sum = 0;
+            for (int i = start; i < (count + start); i++)
+            {
+                sum += i;
+                yield return i;
+                if (i == start)
+                {
+                    myFirstElement();
+                    //Событие, которое выводит сообщение после первого вызванного элемента
+                }
+                //mySumOfAllElements(sum); 
+                //Использовать в случае, если мы хотим видеть сумму элементов после каждой итерации
+            }
+            if (sum > 0)
+            {
+                mySumOfAllElements(sum);
+                //Событие, которое принимает сумму всех элементов 
+            }
+        }
+
+        public void ShowMyFirstElement()
+        {
+            //Метод, который вызываетcя с помощью delegate FirstElement()
+            //Выводит сообщение после первого найденного числа в StartCount(int start, int count)
+            Console.WriteLine("EVENT - First element there");
+        }
+
+        public void ShowMySumOfAllElements(int mySumOfAllElements)
+        {
+            //Метод, который вызывается с помощью delegate SumOfAllElements()
+            //Выводит сумму всех элементов StartCount(int start, int count), что выведутся
+            var sum = mySumOfAllElements;
+            Console.WriteLine("EVENT - The sum of elements there are {0}", sum);
+        }
+
+    }
 }
