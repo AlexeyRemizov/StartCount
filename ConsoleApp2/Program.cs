@@ -16,10 +16,10 @@ namespace ConsoleApp2
             GetRange getRange = new GetRange();
 
             //Subscription to the event "Message after the first item"
-            getRange.myFirstElement += getRange.ShowMyFirstElement;
+            getRange.myFirstElement += Program.ShowMyFirstElement;
 
             //Subscription to the event "Displaying the sum of all items"
-            getRange.mySumOfAllElements += getRange.ShowMySumOfAllElements;
+            getRange.mySumOfAllElements += Program.ShowMySumOfAllElements;
 
             foreach (int item in getRange.StartCount(3, 8))
             {
@@ -33,7 +33,22 @@ namespace ConsoleApp2
             Console.WriteLine();
             Console.ReadKey();
         }
-   
+
+        public static void ShowMyFirstElement()
+        {
+
+            Console.WriteLine("EVENT - First element there");
+        }
+
+        //The method that is called with delegate SumOfAllElements ()
+        //Outputs the sum of all the StartCount (int start, int count) items that are output
+        public static void ShowMySumOfAllElements(int mySumOfAllElements)
+        {
+
+            var sum = mySumOfAllElements;
+            Console.WriteLine("EVENT - The sum of elements there are {0}", sum);
+        }
+
     }
 
 }

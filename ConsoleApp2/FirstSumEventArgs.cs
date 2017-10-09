@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    public class FirstSumEventArgs : EventArgs
+    public class FirstEventArgs : EventArgs
     {
-        public int FirstElement { get; set; }
+    }
+
+    public class SumOfAllElementsEventArgs : EventArgs
+    {
         public int SumOfAllElements { get; set; }
     }
 }

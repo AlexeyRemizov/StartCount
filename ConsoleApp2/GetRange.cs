@@ -50,19 +50,6 @@ namespace ConsoleApp2
 
         //The method that is called by delegate FirstElement ()
         //Prints the message after the first found number in StartCount (int start, int count)
-        public void ShowMyFirstElement()
-        {
-            
-            Console.WriteLine("EVENT - First element there");
-        }
-
-        //The method that is called with delegate SumOfAllElements ()
-        //Outputs the sum of all the StartCount (int start, int count) items that are output
-        public void ShowMySumOfAllElements(int mySumOfAllElements)
-        {
-            
-            var sum = mySumOfAllElements;
-            Console.WriteLine("EVENT - The sum of elements there are {0}", sum);
-        }
+       
     }
 }
