@@ -13,7 +13,7 @@ namespace ConsoleApp2
         public delegate void FirstElement();
         public delegate void SumOfAllElements(int sumOfAllElements);
 
-        public event EventHandler <FirstSumEventArgs> MyFirstElement;
+        public event EventHandler <FirstEventArgs> MyFirstElement;
 
         //Declaring an event for the FirstElement delegate ()
         public event FirstElement myFirstElement;
@@ -24,7 +24,7 @@ namespace ConsoleApp2
         //An analog of the Range method (int, int)
         public IEnumerable<int> StartCount(int start, int count)
         {
-            EventHandler<FirstSumEventArgs> handler = MyFirstElement;          
+            EventHandler <FirstEventArgs> hendler = MyFirstElement;        
             var sum = 0;
             for (int i = start; i < (count + start); i++)
             {
@@ -34,7 +34,8 @@ namespace ConsoleApp2
                 {
 
                     //An event that prints a message after the first element called
-                    myFirstElement();
+                    //myFirstElement();
+                    hendler(this, new FirstEventArgs() { });
                     
                 }
                 //Use in case we want to see the sum of the elements after each iteration

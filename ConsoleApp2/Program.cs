@@ -16,7 +16,7 @@ namespace ConsoleApp2
             GetRange getRange = new GetRange();
 
             //Subscription to the event "Message after the first item"
-            getRange.myFirstElement += Program.ShowMyFirstElement;
+            getRange.MyFirstElement += Program.ShowMyFirstElement;
 
             //Subscription to the event "Displaying the sum of all items"
             getRange.mySumOfAllElements += Program.ShowMySumOfAllElements;
@@ -34,7 +34,7 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
 
-        public static void ShowMyFirstElement()
+        public static void ShowMyFirstElement(object sender, EventArgs e)
         {
 
             Console.WriteLine("EVENT - First element there");
