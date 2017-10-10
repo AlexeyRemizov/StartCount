@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2
+namespace StarCount
 {
     public class Program
     {
-        
         public static void Main(string[] args)
         {
             var summ = 0;
@@ -19,7 +18,7 @@ namespace ConsoleApp2
             getRange.MyFirstElement += Program.ShowMyFirstElement;
 
             //Subscription to the event "Displaying the sum of all items"
-            getRange.mySumOfAllElements += Program.ShowMySumOfAllElements;
+            getRange.MySumOfAllElements += Program.ShowMySumOfAllElements;
 
             foreach (int item in getRange.StartCount(3, 8))
             {
@@ -34,19 +33,17 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
 
-        public static void ShowMyFirstElement(object sender, EventArgs e)
+        //The method that is called with event MyFirstElement()
+        public static void ShowMyFirstElement(object sender, FirstEventArgs e)
         {
-
             Console.WriteLine("EVENT - First element there");
         }
 
-        //The method that is called with delegate SumOfAllElements ()
+        //The method that is called with event MySumOfAllElements()
         //Outputs the sum of all the StartCount (int start, int count) items that are output
-        public static void ShowMySumOfAllElements(int mySumOfAllElements)
-        {
-
-            var sum = mySumOfAllElements;
-            Console.WriteLine("EVENT - The sum of elements there are {0}", sum);
+        public static void ShowMySumOfAllElements(object sender, SumOfAllElementsEventArgs e)
+        {   
+            Console.WriteLine("EVENT - The sum of elements there are {0}", e.SumOfAllElements);
         }
 
     }
