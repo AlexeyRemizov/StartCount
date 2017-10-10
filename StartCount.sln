@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartCount", "ConsoleApp2\StartCount.csproj", "{52E777D1-11E4-4711-B590-8CA327F7E72A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartCountTest", "StartCountTest\StartCountTest.csproj", "{3EF2C4D4-B41C-4701-804B-BFA9909DA2A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartCount.Tests", "StartCountTest\StartCount.Tests.csproj", "{3EF2C4D4-B41C-4701-804B-BFA9909DA2A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

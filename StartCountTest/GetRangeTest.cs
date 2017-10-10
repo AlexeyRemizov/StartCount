@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StarCount;
 
-namespace StartCountTest
+namespace StartCount.Tests
 {
     public class TestOfAmountOurStartCount
     {
@@ -30,13 +30,17 @@ namespace StartCountTest
             Assert.Equal(5, resultOfAmount);
         }
 
-        [Fact]
+        [Theory]
         public void PositiveSumOfAllElementsEventsArgs(SumOfAllElementsEventArgs e)
         {
             //Arrange
             var getRangeTest2 = new GetRange();
+            int resultOfEvent;
+
             //Act
-            int resultOfEvent = e.SumOfAllElements;
+            getRangeTest2.StartCount(3, 8);
+            resultOfEvent = e.SumOfAllElements;
+            
             //Assert
             Assert.Equal(52, resultOfEvent);
             
