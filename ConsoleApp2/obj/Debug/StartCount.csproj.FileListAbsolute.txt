@@ -9,3 +9,4 @@ C:\Users\oleksii.remizov\Documents\Visual Studio 2017\Projects\StartCount\Consol
 C:\Users\oleksii.remizov\Documents\Visual Studio 2017\Projects\StartCount\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
 C:\Users\oleksii.remizov\Documents\Visual Studio 2017\Projects\StartCount\ConsoleApp2\obj\Debug\ConsoleApp2.exe
 C:\Users\oleksii.remizov\Documents\Visual Studio 2017\Projects\StartCount\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Users\oleksii.remizov\Documents\Visual Studio 2017\Projects\StartCount\ConsoleApp2\obj\Debug\StartCount.csprojResolveAssemblyReference.cache

@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 namespace StarCount
 {
     public class GetRange
-    {    
+    {
         //Announcement of events
-        public event EventHandler <FirstEventArgs> MyFirstElement;
-        public event EventHandler<SumOfAllElementsEventArgs> MySumOfAllElements;
-
+        public event EventHandler<FirstEventArgs> FirstElementEA;
+        public event EventHandler<SumOfAllElementsEventArgs> SumOfAllElementsEA;
         public IEnumerable<int> StartCount(int start, int count)
         {
-            EventHandler <FirstEventArgs> hendler = MyFirstElement;
-            EventHandler<SumOfAllElementsEventArgs> hendlerSum = MySumOfAllElements;
             var sum = 0;
             for (int i = start; i < (count + start); i++)
             {
@@ -23,22 +20,19 @@ namespace StarCount
                 yield return i;
                 if (i == start)
                 {
-                    if (MyFirstElement != null)
+                    if (FirstElementEA != null)
                     {
                         //An event that prints a message after the first element called
-                        hendler(this, new FirstEventArgs() { });
+                        FirstElementEA(this, new FirstEventArgs() { });
                     }
                 }
             }
-            if (MySumOfAllElements != null)
+            if (SumOfAllElementsEA != null)
             {
-                hendlerSum(this, new SumOfAllElementsEventArgs() {SumOfAllElements = sum});
+                SumOfAllElementsEA(this, new SumOfAllElementsEventArgs() {SumOfAllElements = sum});
                 
             }
         }
-
-        //The method that is called by delegate FirstElement ()
-        //Prints the message after the first found number in StartCount (int start, int count)
        
     }
 }

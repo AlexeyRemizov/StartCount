@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace StarCount
@@ -10,15 +11,16 @@ namespace StarCount
     {
         public static void Main(string[] args)
         {
+            var getRangeTest2 = new GetRange();
             var summ = 0;
             var result = 0;
             GetRange getRange = new GetRange();
 
             //Subscription to the event "Message after the first item"
-            getRange.MyFirstElement += Program.ShowMyFirstElement;
+            getRange.FirstElementEA += Program.ShowMyFirstElement;
 
             //Subscription to the event "Displaying the sum of all items"
-            getRange.MySumOfAllElements += Program.ShowMySumOfAllElements;
+            getRange.SumOfAllElementsEA += Program.ShowMySumOfAllElements;
 
             foreach (int item in getRange.StartCount(3, 8))
             {

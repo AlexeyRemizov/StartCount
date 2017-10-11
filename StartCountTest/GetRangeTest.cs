@@ -1,16 +1,17 @@
-﻿//using ConsoleApp2;
-using System;
+﻿using System;
 using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StarCount;
+using System.Threading;
 
 namespace StartCount.Tests
 {
     public class TestOfAmountOurStartCount
     {
+       
         [Fact]
         public void PositiveTestStartCount()
         {
@@ -27,23 +28,29 @@ namespace StartCount.Tests
         {
             var getRangeTest1 = new GetRange();
             var resultOfAmount = getRangeTest1.StartCount(5, 3).Count();
-            Assert.Equal(5, resultOfAmount);
+            Assert.False(5.Equals(resultOfAmount));
         }
 
-        [Theory]
-        public void PositiveSumOfAllElementsEventsArgs(SumOfAllElementsEventArgs e)
+        [Fact]
+        public void PositiveSumOfAllElementsEventsArgs()
         {
             //Arrange
             var getRangeTest2 = new GetRange();
-            int resultOfEvent;
-
+            SumOfAllElementsEventArgs args = null;
+            getRangeTest2.SumOfAllElementsEA += (s,e) => { args = e; };
+            
             //Act
-            getRangeTest2.StartCount(3, 8);
-            resultOfEvent = e.SumOfAllElements;
+            getRangeTest2.StartCount(3, 8).ToList();
             
             //Assert
-            Assert.Equal(52, resultOfEvent);
+            Assert.Equal(52, args.SumOfAllElements);
             
         }
+
+        /*private void GetRangeTest2_MySumOfAllElements(object sender, SumOfAllElementsEventArgs e)
+        {
+            throw new NotImplementedException();
+        }*/
+
     }
 }
